@@ -17,7 +17,7 @@ clean:
 
 .PHONY: test
 test:	target/hello
-	hexdump -C --color=always target/hello
-	diff --unified --text \
+	target/hello | diff \
+	  --unified --text \
 		--color=always \
-		<(target/hello) test/output.txt
+		- test/output.txt

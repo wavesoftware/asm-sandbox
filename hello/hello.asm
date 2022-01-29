@@ -5,7 +5,7 @@
 main:    
 
           mov       rdi, message            ; First integer (or pointer) argument in rdi
-          call      puts                    ; puts(message)
+          call      [rel puts wrt ..got]    ; puts(message)
 
           mov       rax, 1                  ; system call for write
           mov       rdi, 1                  ; file handle 1 is stdout
@@ -15,6 +15,6 @@ main:
 
           ret
 
-          section   .data
+          section   .rodata
 message:  dw        "Hello, World!", 0xA
 msglen:   equ       $-message - 1

@@ -1,6 +1,7 @@
 
 target/hello: target/hello.o
-	gcc -o target/hello \
+	gcc -fno-plt \
+		-o target/hello \
 		target/hello.o
 
 target/hello.o: target
@@ -21,3 +22,4 @@ test:	target/hello
 	  --unified --text \
 		--color=always \
 		- test/output.hex
+	@echo -e "\033[92m>> Success!\033[0m"

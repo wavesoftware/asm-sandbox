@@ -2,6 +2,14 @@
 
 ## Development
 
+### Requirements:
+
+You'd need to have a nasm compiler installed. On Fedora do:
+
+```shell
+dnf install nasm
+```
+
 Run:
 
 ```shell

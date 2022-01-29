@@ -1,6 +1,6 @@
 
 target/hello: target/hello.o
-	ld -o target/hello \
+	gcc -o target/hello \
 		target/hello.o
 
 target/hello.o: target
@@ -17,7 +17,7 @@ clean:
 
 .PHONY: test
 test:	target/hello
-	target/hello | diff \
+	target/hello | xxd | diff \
 	  --unified --text \
 		--color=always \
-		- test/output.txt
+		- test/output.hex

@@ -1,16 +1,20 @@
-          global    _start
+          global    main
+          extern    puts
 
           section   .text
-_start:   mov       rax, 1                  ; system call for write
+main:    
+
+          mov       rdi, message            ; First integer (or pointer) argument in rdi
+          call      [rel puts wrt ..got]    ; puts(message)
+
+          mov       rax, 1                  ; system call for write
           mov       rdi, 1                  ; file handle 1 is stdout
           mov       rsi, message            ; address of string to output
           mov       rdx, msglen             ; number of bytes
           syscall                           ; invoke operating system to do the write
-        
-          mov       rax, 60                 ; system call for exit
-          xor       rdi, rdi                ; exit code 0
-          syscall
 
-          section   .data
-message:  db        "Hello, World!", 0xA
-msglen:   equ       $-message
+          ret
+
+          section   .rodata
+message:  dw        "Hello, World!", 0xA
+msglen:   equ       $-message - 1

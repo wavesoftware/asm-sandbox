@@ -7,3 +7,7 @@ $(SUBDIRS):
 	$(MAKE) -C $@ $(MAKECMDGOALS)
 
 .PHONY: $(TOPTARGETS) $(SUBDIRS)
+
+.PHONY: watch
+watch:
+	watchexec $(MAKE) clean test

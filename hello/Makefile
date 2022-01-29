@@ -1,6 +1,7 @@
 
 target/hello: target/hello.o
-	ld -o target/hello \
+	gcc -fno-plt \
+		-o target/hello \
 		target/hello.o
 
 target/hello.o: target
@@ -17,7 +18,8 @@ clean:
 
 .PHONY: test
 test:	target/hello
-	target/hello | diff \
+	target/hello | xxd | diff \
 	  --unified --text \
 		--color=always \
-		- test/output.txt
+		- test/output.hex
+	@echo -e "\033[92m>> Success!\033[0m"

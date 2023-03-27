@@ -4,10 +4,10 @@
 
 ### Requirements:
 
-You'd need to have a nasm compiler installed. On Fedora do:
+You need to have a nasm compiler installed. On Fedora do:
 
 ```shell
-dnf install nasm
+dnf install -y nasm
 ```
 
 Run:

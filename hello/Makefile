@@ -4,7 +4,7 @@ target/hello: target/hello.o
 		-o target/hello \
 		target/hello.o
 
-target/hello.o: target
+target/hello.o: target hello.asm
 	nasm -f elf64 \
 		-o target/hello.o \
 		hello.asm
